@@ -41,37 +41,42 @@
           </v-btn>
         </template>
 
-        <v-container fluid>
           <v-card>
           <v-row>
-            <v-col cols="3" sm="6" offset-sm="4">
+            <v-col cols="3" sm="7" offset-sm="4">
               <v-row>
-                <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-email</v-icon>
-                </v-btn>
-                <v-btn large icon @click="() => {}">
-                  <v-icon :color="yellow">mdi-blogger</v-icon>
-                </v-btn>
-                 <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-account-box</v-icon>
-                </v-btn>
-                <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-calendar-clock</v-icon>
-                </v-btn>
-                 <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-account-multiple</v-icon>
-                </v-btn>
-                <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-calendar-check</v-icon>
-                </v-btn>
-                 <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-account-group</v-icon>
-                </v-btn>
+                <div>
+                    <v-icon>mdi-email</v-icon> <br>
+                    email
+                </div>
+                <div>
+                    <v-icon :color="yellow">mdi-blogger</v-icon><br>
+                    blog
+                </div>
+                <div>
+                   <v-icon>mdi-account-box</v-icon><br>
+                    group
+                </div>
+                <div>
+                    <v-icon>mdi-calendar-clock</v-icon> <br>
+                    calendar
+                </div>
+                <div>
+                    <v-icon>mdi-account-multiple</v-icon> <br>
+                    group
+                </div>
+                <div>
+                    <v-icon>mdi-calendar-check</v-icon> <br>
+                    task
+                </div>
+                <div>
+                    <v-icon>mdi-account-group</v-icon> <br>
+                    roster
+                </div>
               </v-row>
             </v-col>
           </v-row>
           </v-card>
-        </v-container>
       </v-menu>
     </v-app-bar>
 
