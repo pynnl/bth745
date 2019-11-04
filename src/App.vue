@@ -44,7 +44,7 @@
         <v-container fluid>
           <v-card>
           <v-row>
-            <v-col cols="3" sm="5" offset-sm="4">
+            <v-col cols="3" sm="6" offset-sm="4">
               <v-row>
                 <v-btn large icon @click="() => {}">
                   <v-icon>mdi-email</v-icon>
@@ -53,25 +53,19 @@
                   <v-icon :color="yellow">mdi-blogger</v-icon>
                 </v-btn>
                  <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-email</v-icon>
+                  <v-icon>mdi-account-box</v-icon>
                 </v-btn>
                 <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-email</v-icon>
+                  <v-icon>mdi-calendar-clock</v-icon>
                 </v-btn>
                  <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-email</v-icon>
+                  <v-icon>mdi-account-multiple</v-icon>
                 </v-btn>
                 <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-email</v-icon>
+                  <v-icon>mdi-calendar-check</v-icon>
                 </v-btn>
                  <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-email</v-icon>
-                </v-btn>
-                <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-email</v-icon>
-                </v-btn>
-                <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-email</v-icon>
+                  <v-icon>mdi-account-group</v-icon>
                 </v-btn>
               </v-row>
             </v-col>
