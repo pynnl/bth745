@@ -14,65 +14,31 @@
       <v-btn text href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
         <span class="mr-2">Latest Release</span>
       </v-btn>
-      <!--<v-menu
-        right
-        top
-      >
-        <template v-slot:activator="{ on }">
-          <v-btn icon v-on="on">
-            <v-icon>mdi-apps</v-icon>
-          </v-btn>
-        </template>
 
-        <v-list>
-          <v-list-item
-            v-for="n in ['Send Email' ]"
-            :key="n"
-            @click="() => {}"
+      <!-- toolbox -->
+      <v-btn id="toolbox" icon>
+        <v-icon>mdi-apps</v-icon>
+      </v-btn>
+      <v-menu activator="#toolbox" :close-on-content-click="false" offset-y>
+        <v-card class="d-flex flex-wrap justify-space-around py-1" width="300">
+          <v-btn
+            v-for="e in tools"
+            :key="e.label"
+            :color="e.color"
+            width="30%"
+            height="80"
+            text
           >
-            <v-list-item-title>{{ n }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>-->
-      <v-menu bottom :offset-y="10" v-model="menu">
-        <template v-slot:activator="{ on }">
-          <v-btn icon v-on="on">
-            <v-icon>mdi-apps</v-icon>
+            <div>
+              <v-icon>{{e.icon}}</v-icon>
+              <div>{{e.label}}</div>
+            </div>
           </v-btn>
-        </template>
-
-        <v-container fluid>
-          <v-card>
-          <v-row>
-            <v-col cols="3" sm="6" offset-sm="4">
-              <v-row>
-                <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-email</v-icon>
-                </v-btn>
-                <v-btn large icon @click="() => {}">
-                  <v-icon :color="yellow">mdi-blogger</v-icon>
-                </v-btn>
-                 <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-account-box</v-icon>
-                </v-btn>
-                <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-calendar-clock</v-icon>
-                </v-btn>
-                 <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-account-multiple</v-icon>
-                </v-btn>
-                <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-calendar-check</v-icon>
-                </v-btn>
-                 <v-btn large icon @click="() => {}">
-                  <v-icon>mdi-account-group</v-icon>
-                </v-btn>
-              </v-row>
-            </v-col>
-          </v-row>
-          </v-card>
-        </v-container>
+        </v-card>
       </v-menu>
+
+      <!-- login -->
+      <!-- TODO: login button here -->
     </v-app-bar>
 
     <v-content>
@@ -103,19 +69,24 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld'
-// import AppBar from './components/AppBar'
 import BlackBoard from './components/BlackBoard'
 
 export default {
   name: 'App',
   components: {
     BlackBoard
-    // HelloWorld,
-    // AppBar
   },
   data: () => ({
-    tab: null
+    tab: null,
+    tools: [
+      { icon: 'mdi-email', label: 'Email', color: 'red' },
+      { icon: 'mdi-blogger', label: 'TODO', color: 'blue' },
+      { icon: 'mdi-account-box', label: 'TODO' },
+      { icon: 'mdi-calendar-clock', label: 'TODO' },
+      { icon: 'mdi-account-multiple', label: 'TODO' },
+      { icon: 'mdi-calendar-check', label: 'TODO' },
+      { icon: 'mdi-account-group', label: 'TODO' }
+    ]
   })
 }
 </script>
