@@ -28,18 +28,19 @@
       </v-menu>
 
       <!-- login -->
-      <v-dialog v-model="dialog" persistent max-width="600px">
+      <v-btn color="primary" dark v-if="loggedin">Logout</v-btn>
+      <v-dialog v-model="dialog" persistent max-width="300px">
       <template v-slot:activator="{ on }">
-        <v-btn color="primary" dark v-on="on">Login</v-btn>
+        <v-btn color="primary" dark v-on="on" v-if="!loggedin">Login</v-btn>
       </template>
       <v-card>
         <v-card-title>
-          <span class="headline">Login</span>
+          <span style="" class="headline">Login</span>
         </v-card-title>
         <v-card-text>
           <v-container>
             <v-row>
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12">
                 <v-text-field label="Username" required></v-text-field>
               </v-col>
               <v-col cols="12" >
@@ -51,7 +52,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="dialog = false">Login</v-btn>
+          <v-btn color="blue darken-1" text @click="dialog = false; loggedin = true">Login</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -93,6 +94,7 @@ export default {
     BlackBoard
   },
   data: () => ({
+    loggedin: false,
     dialog: false,
     tab: null,
     tools: [
