@@ -24,7 +24,7 @@
     <div style="margin-left: 100px">
       <v-tabs-items v-model="tab">
         <v-tab-item value="courses">
-          <Courses/>
+          <TimeTable/>
         </v-tab-item>
       </v-tabs-items>
     </div>
@@ -33,14 +33,16 @@
 </template>
 
 <script>
-import Courses from './Courses'
+import TimeTable from './TimeTable'
+import courses from './courses'
 
 export default {
   components: {
-    Courses
+    TimeTable
   },
   data: () => ({
-    tab: null
+    tab: null,
+    courses
   })
 }
 </script>
