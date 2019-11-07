@@ -24,11 +24,7 @@
     <div style="margin-left: 100px">
       <v-tabs-items v-model="tab">
         <v-tab-item value="courses">
-          <v-calendar
-            type="week"
-            :max-days="5"
-          >
-          </v-calendar>
+          <Courses/>
         </v-tab-item>
       </v-tabs-items>
     </div>
@@ -37,7 +33,12 @@
 </template>
 
 <script>
+import Courses from './Courses'
+
 export default {
+  components: {
+    Courses
+  },
   data: () => ({
     tab: null
   })
