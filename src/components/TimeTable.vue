@@ -2,6 +2,10 @@
   <v-calendar
     type="week"
     :max-days="5"
+    :weekdays=[1,2,3,4,5]
+    :first-interval=8
+    :interval-count=14
+    :interval-height=55
   >
   </v-calendar>
 </template>
