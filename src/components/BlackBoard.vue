@@ -4,41 +4,41 @@
       clipped
       fixed
       dark
+      stateless
       :width="93"
       :value="true"
+      style="top: 50px; padding-top: 8px"
     >
-      <v-divider class="mt-12"></v-divider>
-      <v-tabs
-        vertical
-        v-model="tab"
-        class="mt-6"
-      >
-        <v-tab href="#courses">Courses</v-tab>
+      <v-tabs vertical v-model="tab">
+        <v-tab>Courses</v-tab>
         <v-divider></v-divider>
-        <v-tab>BTH 745</v-tab>
-        <v-tab>Course</v-tab>
-        <v-tab>Course</v-tab>
-        <v-tab>Course</v-tab>
+        <v-tab v-for="e in courses" :key="e.code">{{e.code}}</v-tab>
       </v-tabs>
     </v-navigation-drawer>
-    <div style="margin-left: 100px">
-      <v-tabs-items v-model="tab">
-        <v-tab-item value="courses">
-          <TimeTable/>
-        </v-tab-item>
-      </v-tabs-items>
-    </div>
 
+    <v-tabs-items v-model="tab" style="margin-left: 93px">
+      <v-tab-item
+        v-for="e in [{}, ...courses]"
+        :key="e.code"
+        transition="fade-transition"
+        reverse-transition="fade-transition"
+      >
+        <Course v-if="e.code" :course="e"/>
+        <TimeTable v-else/>
+      </v-tab-item>
+    </v-tabs-items>
   </div>
 </template>
 
 <script>
 import TimeTable from './TimeTable'
+import Course from './Course'
 import courses from './courses'
 
 export default {
   components: {
-    TimeTable
+    TimeTable,
+    Course
   },
   data: () => ({
     tab: null,

@@ -1,15 +1,15 @@
 <template>
   <v-app>
     <!-- app bar -->
-    <v-app-bar style="box-shadow: 0 2px black" app clipped-left color="red accent-2">
+    <v-app-bar app clipped-left dense style="box-shadow: 0 2px black" color="red accent-2">
       <v-tabs background-color="transparent" color="black" v-model="tab">
-        <v-tab href="#home">
+        <v-tab>
           <v-img :src="require('./assets/myseneca-white.png')" width="140px"></v-img>
         </v-tab>
-        <v-tab href="#blackboard">BlackBoard</v-tab>
-        <v-tab href="#students">Students</v-tab>
-        <v-tab href="#research">Research</v-tab>
-        <v-tab href="#system">System</v-tab>
+        <v-tab>BlackBoard</v-tab>
+        <v-tab>Students</v-tab>
+        <v-tab>Research</v-tab>
+        <v-tab>System</v-tab>
       </v-tabs>
 
       <!-- toolbox -->
@@ -58,27 +58,21 @@
     </v-dialog>
     </v-app-bar>
 
+    <!-- route -->
     <v-content>
       <v-tabs-items v-model="tab">
         <v-tab-item
-          v-for="e in ['home', 'students', 'research', 'system']"
+          v-for="e in ['home', null, 'students', 'research', 'system']"
           :key="e"
-          :value="e"
           transition="fade-transition"
           reverse-transition="fade-transition"
         >
           <v-img
+            v-if="e"
             :src="require('./assets/' + e + '.png')"
             style="filter: blur(1px)"
-            :transition="false"
           ></v-img>
-        </v-tab-item>
-        <v-tab-item
-          value="blackboard"
-          transition="fade-transition"
-          reverse-transition="fade-transition"
-        >
-          <BlackBoard />
+          <BlackBoard v-else/>
         </v-tab-item>
       </v-tabs-items>
     </v-content>
