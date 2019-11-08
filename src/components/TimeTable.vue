@@ -1,11 +1,11 @@
 <template>
-  <v-calendar style="margin: auto; min-width: 1000px; width: 50%; height: 50% "
+  <v-calendar class="time-table" style="padding: 20px 150px"
     type="week"
     :max-days="5"
     :weekdays=[1,2,3,4,5]
     :first-interval=8
-    :interval-count=14
-    :interval-height=55
+    :interval-count=13
+    :interval-height=40
     :events="courses"
     :now="today"
     :value="today"
@@ -17,6 +17,10 @@
 <style>
 .v-event-timed-container {
   width: 100% !important;
+}
+
+.time-table ::-webkit-scrollbar {
+  display: none;
 }
 </style>
 

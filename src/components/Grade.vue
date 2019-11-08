@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding-top: 50px; margin: 0 20px">
     <v-simple-table
       :fixed-header="fixedHeader"
     >
@@ -19,11 +19,11 @@
             <td>/{{ item.gradeOutOf }}</td>
             <td>{{ item.weight }}%</td>
           </tr>
-          <tr style="background: grey">
-            <td>total</td>
+          <tr style="background: #ccc; font-weight: bold">
+            <td>Total</td>
             <td>350</td>
             <td>/420</td>
-            <td>100%</td>
+            <td>92%</td>
           </tr>
         </tbody>
       </template>
@@ -37,43 +37,43 @@ export default {
     height: 300,
     grades: [
       {
-        name: 'Assignment1',
+        name: 'Assignment 1',
         grade: 15,
         gradeOutOf: 15,
         weight: 2
       },
       {
-        name: 'Quiz1',
+        name: 'Quiz 1',
         grade: 10,
         gradeOutOf: 15,
         weight: 15
       },
       {
-        name: 'test1',
+        name: 'Test 1',
         grade: 35,
         gradeOutOf: 50,
         weight: 10
       },
       {
-        name: 'test2',
+        name: 'Test 2',
         grade: 45,
         gradeOutOf: 55,
         weight: 10
       },
       {
-        name: 'test3',
+        name: 'Test 3',
         grade: 26,
         gradeOutOf: 45,
         weight: 10
       },
       {
-        name: 'test4',
+        name: 'Test 4',
         grade: 47,
         gradeOutOf: 55,
         weight: 10
       },
       {
-        name: 'test5',
+        name: 'Test 5',
         grade: 40,
         gradeOutOf: 40,
         weight: 10

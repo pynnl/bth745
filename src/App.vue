@@ -52,7 +52,7 @@
     </v-app-bar>
 
     <!-- route -->
-    <v-content>
+    <v-content style="background: white">
       <v-tabs-items v-model="tab">
         <v-tab-item
           v-for="e in ['home', null, 'students', 'research', 'system']"

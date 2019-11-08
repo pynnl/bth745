@@ -143,10 +143,17 @@
           </template>
 
           <!-- others -->
+          <v-card-text v-else-if="e.label === 'Course Information'">
+            <v-skeleton-loader
+              :boilerplate="true"
+              type="text@3, sentences, list-item-avatar-three-line@2"
+            ></v-skeleton-loader>
+          </v-card-text>
+
           <v-card-text v-else>
             <v-skeleton-loader
               :boilerplate="true"
-              type="text@3, sentences, text@2, sentences"
+              type="text@3, sentences, text, sentences"
             ></v-skeleton-loader>
           </v-card-text>
         </v-card>
@@ -162,7 +169,7 @@
     >
       <v-card tile class="d-flex flex-column" style="height: 100vh">
         <div style="height: 48px">
-          <v-toolbar dense dark color="accent">
+          <v-toolbar dense dark color="primary">
             <v-btn icon dark @click="submission = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
@@ -193,7 +200,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="green darken-1"
+            color="primary"
             text
             @click="confirm = false"
           >
@@ -201,7 +208,7 @@
           </v-btn>
 
           <v-btn
-            color="green darken-1"
+            color="primary"
             text
             @click="
               confirm = false
