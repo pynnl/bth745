@@ -6,24 +6,6 @@
       <template v-slot:default>
         <thead>
           <tr>
-            <th class="text-right">Total</th>
-            <th class="text-left">Out of</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-right">350</td>
-            <td>/420</td>
-          </tr>
-        </tbody>
-      </template>
-    </v-simple-table>
-    <v-simple-table
-      :fixed-header="fixedHeader"
-    >
-      <template v-slot:default>
-        <thead>
-          <tr>
             <th class="text-left">Item</th>
             <th class="text-left">Grade</th>
             <th class="text-left">Out of</th>
@@ -36,6 +18,12 @@
             <td>{{ item.grade }}</td>
             <td>/{{ item.gradeOutOf }}</td>
             <td>{{ item.weight }}%</td>
+          </tr>
+          <tr style="background: grey">
+            <td>total</td>
+            <td>350</td>
+            <td>/420</td>
+            <td>100%</td>
           </tr>
         </tbody>
       </template>
