@@ -7,9 +7,9 @@
       stateless
       :width="93"
       :value="true"
-      style="top: 50px; padding-top: 8px"
+      style="top: 50px; padding-top: 8px; background: #333"
     >
-      <v-tabs vertical v-model="tab">
+      <v-tabs vertical v-model="tab" slider-size="3" background-color="#333">
         <v-tab>Courses</v-tab>
         <v-divider></v-divider>
         <v-tab v-for="e in courses" :key="e.code">{{e.code}}</v-tab>

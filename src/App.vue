@@ -1,8 +1,8 @@
 <template>
   <v-app>
     <!-- app bar -->
-    <v-app-bar app clipped-left dense style="box-shadow: 0 2px black" color="red accent-2">
-      <v-tabs background-color="transparent" color="black" v-model="tab">
+    <v-app-bar app clipped-left dense style="box-shadow: 0 2px #333" color="red accent-2">
+      <v-tabs background-color="transparent" color="#333" v-model="tab" slider-size="3">
         <v-tab>
           <v-img :src="require('./assets/myseneca-white.png')" width="140px"></v-img>
         </v-tab>
@@ -13,25 +13,28 @@
       </v-tabs>
 
       <!-- toolbox -->
-      <v-btn id="toolbox" icon>
+      <v-btn class="ma-3" small fab id="toolbox" icon>
         <v-icon>mdi-apps</v-icon>
       </v-btn>
-      <v-menu activator="#toolbox" :close-on-content-click="false" offset-y>
-        <v-card class="d-flex flex-wrap justify-space-around py-1" width="300">
+      <v-menu id="asdf" style="top: 100px" activator="#toolbox" :close-on-content-click="false" offset-y>
+        <v-card
+          class="d-flex flex-wrap justify-space-around py-1"
+          width="250"
+        >
           <v-btn v-for="e in tools" :key="e.label" :color="e.color" width="30%" height="80" text>
             <div>
               <v-icon>{{e.icon}}</v-icon>
-              <div>{{e.label}}</div>
+              <div class="caption">{{e.label}}</div>
             </div>
           </v-btn>
         </v-card>
       </v-menu>
 
       <!-- login -->
-      <v-btn color="primary" dark v-if="loggedin">Logout</v-btn>
+      <v-btn elevation="0" color="primary" dark v-if="loggedin">Logout</v-btn>
       <v-dialog v-model="dialog" persistent max-width="300px">
       <template v-slot:activator="{ on }">
-        <v-btn color="primary" dark v-on="on" v-if="!loggedin">Login</v-btn>
+        <v-btn elevation="0" color="primary" dark v-on="on" v-if="!loggedin">Login</v-btn>
       </template>
       <v-card>
         <v-card-title>
@@ -97,8 +100,7 @@ export default {
       { icon: 'mdi-account-box', label: 'Contact', color: 'green' },
       { icon: 'mdi-calendar-clock', label: 'Calendar', color: 'blue' },
       { icon: 'mdi-account-multiple', label: 'Group', color: 'green' },
-      { icon: 'mdi-calendar-check', label: 'Task', color: 'blue' },
-      { icon: 'mdi-account-group', label: 'Classmates', color: 'red' }
+      { icon: 'mdi-calendar-check', label: 'Task', color: 'blue' }
     ]
   })
 }

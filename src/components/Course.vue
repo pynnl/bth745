@@ -9,19 +9,32 @@
     >
       <v-list>
         <v-list-group
+          ref="menu"
           v-for="(e, i) in menus"
+          :active-class="e.label !== 'Grade' && 'grey--text text--darken-2'"
           :key="i"
-          @click="reset(i)">
+          :value="!i"
+          :append-icon="e.label !== 'Grade' && '$expand'"
+          @click="reset(i)"
+        >
           <template #activator>
             <v-list-item-content>
-              <v-list-item-title>{{e.label}}</v-list-item-title>
+              <v-list-item-title>
+                <v-icon>{{e.icon}}</v-icon>
+                <span :class="'ml-3 subtitle-2 ' + ((e.label !== 'Grade' || menu !== i) && 'grey--text text--darken-2')">{{e.label}}</span>
+              </v-list-item-title>
             </v-list-item-content>
           </template>
-          <v-tabs v-model="sub" vertical>
+          <v-tabs v-if="e.label !== 'Grade'" v-model="sub" vertical slider-size="3">
             <v-tab
               v-for="f in 4"
               :key="f"
-              style="width: 256px; text-transform: none"
+              class="body-2"
+              style="
+                width: 256px;
+                text-transform: none;
+                justify-content: start;
+                padding-left: 52px"
               @click="scrollTo(genID(course.code, e.label, f))"
             >
               {{e.label}} {{f}}
@@ -31,6 +44,7 @@
       </v-list>
     </v-navigation-drawer>
 
+    <!-- content -->
     <v-tabs-items
       v-model="menu"
       style="
@@ -39,7 +53,10 @@
         padding-bottom:200px"
     >
       <v-tab-item v-for="e in menus" :key="e.label">
+        <Grade v-if="e.label === 'Grade'"/>
+
         <v-card
+          v-else
           v-for="f in 4"
           :key="f"
           outlined
@@ -51,8 +68,35 @@
           >
             {{e.label}} {{f}}
           </v-card-title>
-          <v-card-subtitle> date</v-card-subtitle>
-          <v-card-text>
+          <!-- date -->
+          <v-card-subtitle>{{date}}</v-card-subtitle>
+
+          <!-- course document -->
+          <template v-if="e.label === 'Course Document'">
+            <v-card-text>
+            <v-skeleton-loader :boilerplate="true" type="text@2, sentences"></v-skeleton-loader>
+            </v-card-text>
+            <v-divider></v-divider>
+            <div class="d-flex">
+              <v-card-subtitle style="width: 180px">Attached Files:</v-card-subtitle>
+              <div class="py-3 flex-grow-1 d-flex flex-wrap">
+                <div
+                  v-for="e in 5"
+                  :key="e"
+                  class="d-flex align-center"
+                  style="width: 33%"
+                >
+                  <v-skeleton-loader style="width: 100px" :boilerplate="true" type="text"></v-skeleton-loader>
+                  <v-btn fab x-small icon>
+                    <v-icon>mdi-download</v-icon>
+                  </v-btn>
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <!-- others -->
+          <v-card-text v-else>
             <v-skeleton-loader
               :boilerplate="true"
               type="text@3, sentences, text@2, sentences"
@@ -78,27 +122,33 @@
 </template>
 
 <script>
+import Grade from './Grade'
+const date = new Date().toUTCString()
+
 export default {
+  components: { Grade },
   props: ['course'],
   data: () => ({
-    tab: null,
+    date,
     menu: 0,
     sub: 0,
     autoTrackScroll: false,
     menus: [
-      {
-        label: 'Announcement'
-      },
-      {
-        label: 'Course Information'
-      }
+      { label: 'Announcement', icon: 'mdi-bullhorn' },
+      { label: 'Course Information', icon: 'mdi-information' },
+      { label: 'Course Document', icon: 'mdi-file-document' },
+      { label: 'Assignment', icon: 'mdi-square-edit-outline' },
+      { label: 'Grade', icon: 'mdi-format-annotation-plus' }
     ]
   }),
   computed: {
     path () {
       const path = []
       const menu = this.menus[this.menu]
-      path.push(this.course.code, menu.label, `${menu.label} ${this.sub}`)
+      path.push(this.course.code, menu.label)
+      if (menu.label !== 'Grade') {
+        path.push(`${menu.label} ${this.sub + 1}`)
+      }
       return path.map(text => ({ text }))
     }
   },
