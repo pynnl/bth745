@@ -1,4 +1,6 @@
 # bth745
+A school PJ.
+Course: https://www.senecacollege.ca/cgi-bin/subject?s1=BTH745
 
 ## Project setup
 ```
