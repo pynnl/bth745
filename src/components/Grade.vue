@@ -13,7 +13,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in desserts" :key="item.name">
+          <tr v-for="item in grades" :key="item.name">
             <td>{{ item.name }}</td>
             <td>{{ item.grade }}</td>
             <td>{{ item.gradeOutOf }}</td>
@@ -28,7 +28,7 @@ export default {
   data: () => ({
     fixedHeader: false,
     height: 300,
-    desserts: [
+    grades: [
       {
         name: 'Assignment1',
         grade: 15,
