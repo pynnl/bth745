@@ -12,14 +12,14 @@
       <v-tabs vertical v-model="tab" slider-size="3" background-color="#333">
         <v-tab>Courses</v-tab>
         <v-divider></v-divider>
-        <v-tab v-for="e in courses" :key="e.code">{{e.code}}</v-tab>
+        <v-tab v-for="(e, i) in courses" :key="i">{{e.code}}</v-tab>
       </v-tabs>
     </v-navigation-drawer>
 
     <v-tabs-items v-model="tab" style="margin-left: 93px">
       <v-tab-item
-        v-for="e in [{}, ...courses]"
-        :key="e.code"
+        v-for="(e, i) in [{}, ...courses]"
+        :key="i"
         transition="fade-transition"
         reverse-transition="fade-transition"
       >
