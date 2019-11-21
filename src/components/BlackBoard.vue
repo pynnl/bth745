@@ -24,7 +24,7 @@
         reverse-transition="fade-transition"
       >
         <Course v-if="e.code" :course="e"/>
-        <TimeTable v-else/>
+        <TimeTable v-else @course-click="courseClick"/>
       </v-tab-item>
     </v-tabs-items>
   </div>
@@ -33,7 +33,7 @@
 <script>
 import TimeTable from './TimeTable'
 import Course from './Course'
-import courses from './courses'
+import { courses } from './courses'
 
 export default {
   components: {
@@ -43,6 +43,11 @@ export default {
   data: () => ({
     tab: null,
     courses
-  })
+  }),
+  methods: {
+    courseClick (code) {
+      this.tab = courses.findIndex(e => e.code === code) + 1
+    }
+  }
 }
 </script>

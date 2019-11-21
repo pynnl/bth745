@@ -10,6 +10,7 @@
     :now="today"
     :value="today"
     :event-color="getEventColor"
+    @click:event="eventClick"
   >
   </v-calendar>
 </template>
@@ -25,7 +26,7 @@
 </style>
 
 <script>
-import courses from './courses'
+import { events as courses } from './courses'
 
 export default {
   data: () => ({
@@ -51,6 +52,9 @@ export default {
     intervalFormat (interval) {
       const longOptions = { timeZone: 'UTC', hour12: true, hour: '2-digit', minute: '2-digit' }
       return longOptions
+    },
+    eventClick ({ event }) {
+      this.$emit('course-click', event.code)
     }
   }
 }
